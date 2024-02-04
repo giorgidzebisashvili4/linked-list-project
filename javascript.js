@@ -98,6 +98,18 @@ class LinkedList {
     }
     return false;
   }
+  find(value) {
+    let current = this.head;
+    let index = 0;
+    while (current) {
+      if (current.value === value) {
+        return index;
+      }
+      current = current.nextNode;
+      index++;
+    }
+    return null;
+  }
 }
 
 let test = new LinkedList(); // linkedList {head: null}
@@ -116,3 +128,4 @@ console.log(test.at(2));
 test.pop();
 console.log(test.tail());
 console.log(test.contains("davit"));
+console.log(test.find("davit"));
