@@ -50,16 +50,29 @@ class LinkedList {
 
     return count;
   }
-  head() {}
+  getHead() {
+    return this.head;
+  }
+  tail() {
+    let current = this.head;
+    if (this.head) {
+      while (current.nextNode) {
+        current = current.nextNode;
+      }
+      return current;
+    }
+  }
 }
 
-let test1 = new LinkedList(); // linkedList {head: null}
-console.log(test1);
+let test = new LinkedList(); // linkedList {head: null}
+console.log(test);
 
-test1.append("giorgi"); // it is now head first node
-test1.append("davit"); // it is now second node
-test1.append("buta");
-console.log(test1);
-test1.prepend("irakli");
-console.log(test1);
-console.log(test1.size());
+test.append("giorgi"); // it is now head first node
+test.append("davit"); // it is now second node
+test.append("buta");
+console.log(test);
+test.prepend("irakli");
+console.log(test);
+console.log(test.size());
+console.log(test.getHead());
+console.log(test.tail());
