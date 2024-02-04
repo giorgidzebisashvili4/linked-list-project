@@ -62,6 +62,16 @@ class LinkedList {
       return current;
     }
   }
+  at(index) {
+    let current = this.head;
+    for (let i = 0; i < index; i++) {
+      if (!current) {
+        return null;
+      }
+      current = current.nextNode;
+    }
+    return current;
+  }
 }
 
 let test = new LinkedList(); // linkedList {head: null}
@@ -76,3 +86,4 @@ console.log(test);
 console.log(test.size());
 console.log(test.getHead());
 console.log(test.tail());
+console.log(test.at(2));
