@@ -72,6 +72,32 @@ class LinkedList {
     }
     return current;
   }
+  pop() {
+    if (!this.head) {
+      return; // Do nothing if the list is empty.
+    }
+    if (!this.head.nextNode) {
+      this.head = null; // If there's only one node, set the head to null.
+      return;
+    }
+    let current = this.head;
+    let prev = null;
+    while (current.nextNode) {
+      prev = current;
+      current = current.nextNode;
+    }
+    prev.nextNode = null; // Remove the reference to the last node.
+  }
+  contains(searchedValue) {
+    let current = this.head;
+    while (current) {
+      if (current.value === searchedValue) {
+        return true;
+      }
+      current = current.nextNode;
+    }
+    return false;
+  }
 }
 
 let test = new LinkedList(); // linkedList {head: null}
@@ -87,3 +113,6 @@ console.log(test.size());
 console.log(test.getHead());
 console.log(test.tail());
 console.log(test.at(2));
+test.pop();
+console.log(test.tail());
+console.log(test.contains("davit"));
