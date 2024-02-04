@@ -110,6 +110,19 @@ class LinkedList {
     }
     return null;
   }
+  toString() {
+    let current = this.head;
+    let string = "";
+    if (!current) {
+      return "null";
+    }
+    while (current) {
+      string += `( ${current.value} ) -> `;
+      current = current.nextNode;
+    }
+    string += "null";
+    return string;
+  }
 }
 
 let test = new LinkedList(); // linkedList {head: null}
@@ -129,3 +142,5 @@ test.pop();
 console.log(test.tail());
 console.log(test.contains("davit"));
 console.log(test.find("davit"));
+test.append("buta is back");
+console.log(test.toString());
