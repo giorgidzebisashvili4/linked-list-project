@@ -41,18 +41,16 @@ class LinkedList {
     }
   }
   size() {
-    let size = 0;
-
-    if (this.head) {
-      size++;
-      let current = this.head;
-      while (current.nextNode) {
-        current = current.nextNode;
-        size++;
-      }
+    let count = 0;
+    let current = this.head;
+    while (current) {
+      count++;
+      current = current.nextNode;
     }
-    return size;
+
+    return count;
   }
+  head() {}
 }
 
 let test1 = new LinkedList(); // linkedList {head: null}
