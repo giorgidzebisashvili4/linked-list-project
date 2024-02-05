@@ -123,6 +123,59 @@ class LinkedList {
     string += "null";
     return string;
   }
+  insertAt(value, index) {
+    if (index < 0 || index > this.size()) {
+      console.error("Invalid index");
+      return;
+    }
+
+    const newNode = new Node(value);
+
+    if (index === 0) {
+      newNode.nextNode = this.head;
+      this.head = newNode;
+      return;
+    }
+
+    let current = this.head;
+    let prev = null;
+    let currentIndex = 0;
+
+    // Traverse to the specified index
+    while (currentIndex < index) {
+      prev = current;
+      current = current.nextNode;
+      currentIndex++;
+    }
+
+    // Insert the new node at the specified index
+    prev.nextNode = newNode;
+    newNode.nextNode = current;
+  }
+
+  removeAt(index) {
+    if (index < 0 || index > this.size()) {
+      console.error("Invalid index");
+      return;
+    }
+
+    if (index === 0) {
+      this.head = this.head.nextNode;
+      return;
+    }
+
+    let current = this.head;
+    let prev = null;
+    let currentIndex = 0;
+
+    while (currentIndex < index) {
+      prev = current;
+      current = current.nextNode;
+      currentIndex++;
+    }
+
+    prev.nextNode = current.nextNode;
+  }
 }
 
 let test = new LinkedList(); // linkedList {head: null}
@@ -143,4 +196,6 @@ console.log(test.tail());
 console.log(test.contains("davit"));
 console.log(test.find("davit"));
 test.append("buta is back");
+test.insertAt("temo", 2);
+test.removeAt(3);
 console.log(test.toString());
